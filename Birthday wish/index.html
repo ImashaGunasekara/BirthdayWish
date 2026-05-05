@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Sudu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6d031c;
+            --secondary: #fef1f1;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary);
+            color: #444;
+            overflow: hidden; /* Prevent scrolling until they "Enter" */
+        }
+
+        /* --- SPLASH SCREEN (Fixes Auto-play) --- */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            transition: opacity 1s ease-out;
+        }
+
+        #enter-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        /* --- Main Content (Hidden initially) --- */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* --- Polaroid & Slider --- */
+        .slider-container {
+            position: relative;
+            max-width: 90%;
+            margin: 20px auto 80px;
+            overflow: hidden;
+        }
+        .slider { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; padding: 10px; box-sizing: border-box; }
+        .polaroid-frame {
+            background: white;
+            padding: 12px 12px 40px 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            max-width: 100%;
+            border-radius: 2px;
+        }
+        .polaroid-frame img {
+            width: 100%;
+            max-height: 380px; /* Perfect for iPhone */
+            object-fit: contain;
+            display: block;
+        }
+        .caption { font-family: 'Dancing Script', cursive; font-size: 1.5rem; text-align: center; margin-top: 15px; color: #555; }
+
+        /* --- Header & Message --- */
+        header {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; margin: 0; }
+        .message-section { padding: 40px 25px; max-width: 600px; margin: 0 auto; text-align: center; }
+        .personal-note {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            line-height: 1.8;
+        }
+
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; z-index: 10; }
+        .prev { left: 5px; } .next { right: 5px; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        footer { padding: 60px 20px 100px; text-align: center; font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; margin-bottom: 20px;">For My Sudu...</h2>
+        <button id="enter-btn" onclick="startSurprise()">Open Your Heart ❤️</button>
+    </div>
+
+    <!-- Hidden Audio -->
+    <audio id="myAudio" loop>
+      <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header>
+            <div style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">Happy Birthday</div>
+            <h1>My Sudu</h1>
+        </header>
+
+        <section class="message-section">
+        <div class="personal-note">
+            <p>Happy Birthday, my dear Sudu... ❤️</p>
+            <p>No matter what we go through, or how stressful life gets… <b>you are still my person.</b></p>
+            <p>All I want… is *us*.Your love, your warmth, your presence. Because that’s what makes everything feel okay again.</p>
+            <p>You are my home, Sudu.And I still choose you — every single day.</p>
+            <p> I love you more than I say, more than I show… and maybe even more than you realize.Happy Birthday, my forever love ❤️ ❤️</p>
+        </div>
+        </section>
+
+        <h2 style="text-align: center; font-family: 'Playfair Display'; font-size: 1.5rem;">Our Memories</h2>
+
+        <div class="slider-container">
+            <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
+            <div class="slider" id="slider">
+                <div class="slide"><div class="polaroid-frame"><img src="photo1.jpeg" alt="Memory"><div class="caption">Us ❤️</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo2.jpeg" alt="Memory"><div class="caption">Forever</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo3.jpeg" alt="Memory"><div class="caption">My Home</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo4.jpeg" alt="Memory"><div class="caption">You are my safe place</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo5.jpeg" alt="Memory"><div class="caption">wil never get enough of you</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo6.jpeg" alt="Memory"><div class="caption">love u...❤️</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo7.jpeg" alt="Memory"><div class="caption">u'r forever girl</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo8.jpeg" alt="Memory"><div class="caption">love U lots..❤️❤️❤️</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo9.jpeg" alt="Memory"><div class="caption">always I'm there for you</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo10.jpeg" alt="Memory"><div class="caption">Hi... my soon to be my husband...</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo11.jpeg" alt="Memory"><div class="caption">Never let U go..</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo12.jpeg" alt="Memory"><div class="caption">❤️</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="photo13.jpeg" alt="Memory"><div class="caption">zthank You for being mine...</div></div></div>
+                
+            </div>
+            <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
+        </div>
+
+        <footer>Always Yours... Forever.</footer>
+    </div>
+
+    <script>
+        function startSurprise() {
+            // Play Audio
+            var audio = document.getElementById("myAudio");
+            audio.play();
+
+            // Hide Splash & Show Content
+            document.getElementById("splash-screen").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("splash-screen").style.display = "none";
+                document.getElementById("main-content").style.opacity = "1";
+                document.body.style.overflow = "auto";
+            }, 1000);
+        }
+
+        let currentSlide = 0;
+        function moveSlide(step) {
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('.slide');
+            currentSlide = (currentSlide + step + slides.length) % slides.length;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // iPhone Swipe Support
+        let touchstartX = 0;
+        let touchendX = 0;
+        const slider = document.getElementById('slider');
+        slider.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+        slider.addEventListener('touchend', e => { 
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) moveSlide(1);
+            if (touchendX - touchstartX > 50) moveSlide(-1);
+        });
+    </script>
+</body>
+</html>
